@@ -15,6 +15,15 @@ namespace GuidShortener.Test
         }
 
         [Fact]
+        public void InputEqualsOutputOneGuid()
+        {
+            var guid = Guid.Parse("00000001-0000-0000-0000-000000000000");
+            var str = GuidShortener.ToB32String(guid);
+            var resl = GuidShortener.FromB32ToGuid(str);
+            Assert.Equal(guid, resl);
+        }
+
+        [Fact]
         public void InputEqualsOutputMaxGuid()
         {
             var guid = Guid.Parse("FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF");
