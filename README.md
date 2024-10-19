@@ -24,9 +24,9 @@ ac764a47-d085-46f3-8cfb-761067b69ace => HSSMHWWQQ64NEM46NHI4MWVG5M
 ## Performance
 
 ```
-1,000,000 Guid -> base32string = (26.548)ms
-1,000,000 base32string -> Guid = (30.3517)ms
-1,000,000 Guid -> base64string = (17.7961)ms
-1,000,000 base64string -> Guid = (28.6196)ms
+1000000 Guid -> base32string = (183.923)ms
+1000000 base32string -> Guid = (287.5704)ms
+1000000 Guid -> base64string = (98.6457)ms
+1000000 base64string -> Guid = (209.3176)ms
 ```
 
