@@ -1,7 +1,37 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+
+	<!-- Required NuGet properties -->
+	  
+	<PackageId>guid-shortener.10.18.24.001.live</PackageId>
+	<!-- The NuGet package name -->
+	  
+	<Version>1.0.0</Version>
+	<!-- Initial version -->
+	  
+	<Authors>Brett Hessman</Authors>
+	<!-- Author of the package -->
+	  	  
+	<Description>Shorten your GUIDS</Description>
+	<!-- Brief description -->
+	  
+	<PackageTags>dotnet;guid;compress;short;encode</PackageTags>
+	<!-- Keywords for searching -->
+	  
+	<RepositoryUrl>https://github.com/BrettHessman/dotnet-guid-shortener</RepositoryUrl>
+	<!-- URL to the repo -->
+	  
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<!-- License, e.g., MIT, Apache-2.0 -->
+	  
+	<PackageProjectUrl>https://github.com/BrettHessman/dotnet-guid-shortener</PackageProjectUrl>
+	<!-- Project URL -->
+	  
+	<RepositoryType>git</RepositoryType>
+	<!-- Repository type, e.g., git -->
+	  
   </PropertyGroup>
 
 </Project>
