@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace GuidShortener.Performance.Test
 {
@@ -10,37 +11,52 @@ namespace GuidShortener.Performance.Test
             var timer = new Stopwatch();
             Console.WriteLine("Performance Test!");
 
+            var size = 1_000_000;
 
-            var guidArray = new Guid[100000];
-            var stringArray = new string[100000];
+            var guidArray = new Guid[size];
+            var stringArray = new string[size];
 
-
-            Array.Fill(guidArray, Guid.NewGuid());
+            // test 1
+            guidArray = Enumerable.Range(0, size)
+                             .Select(_ => Guid.NewGuid())
+                             .ToArray();
             timer.Start();
             Array.ForEach(guidArray, x => GuidShortener.ToB32String(x));
             timer.Stop();
-            Console.WriteLine($"1,000,000 Guid -> base32string = ({timer.Elapsed.TotalMilliseconds})ms");
+            Console.WriteLine($"{size} Guid -> base32string = ({timer.Elapsed.TotalMilliseconds})ms");
+
 
             timer.Reset();
-            Array.Fill(stringArray, GuidShortener.ToB32String(Guid.NewGuid()));
+            // test 2
+            stringArray = Enumerable.Range(0, size)
+                 .Select(_ => GuidShortener.ToB32String(Guid.NewGuid()))
+                 .ToArray();
             timer.Start();
             Array.ForEach(stringArray, x => GuidShortener.FromB32ToGuid(x));
             timer.Stop();
-            Console.WriteLine($"1,000,000 base32string -> Guid = ({timer.Elapsed.TotalMilliseconds})ms");
+            Console.WriteLine($"{size} base32string -> Guid = ({timer.Elapsed.TotalMilliseconds})ms");
+
 
             timer.Reset();
-            Array.Fill(guidArray, Guid.NewGuid());
+            // test 3
+            guidArray = Enumerable.Range(0, size)
+                             .Select(_ => Guid.NewGuid())
+                             .ToArray();
             timer.Start();
             Array.ForEach(guidArray, x => GuidShortener.ToB64String(x));
             timer.Stop();
-            Console.WriteLine($"1,000,000 Guid -> base64string = ({timer.Elapsed.TotalMilliseconds})ms");
+            Console.WriteLine($"{size} Guid -> base64string = ({timer.Elapsed.TotalMilliseconds})ms");
+
 
             timer.Reset();
-            Array.Fill(stringArray, GuidShortener.ToB64String(Guid.NewGuid()));
+            // test 4
+            stringArray = Enumerable.Range(0, size)
+                 .Select(_ => GuidShortener.ToB64String(Guid.NewGuid()))
+                 .ToArray();
             timer.Start();
             Array.ForEach(stringArray, x => GuidShortener.FromB64ToGuid(x));
             timer.Stop();
-            Console.WriteLine($"1,000,000 base64string -> Guid = ({timer.Elapsed.TotalMilliseconds})ms");
+            Console.WriteLine($"{size} base64string -> Guid = ({timer.Elapsed.TotalMilliseconds})ms");
         }
     }
 }
