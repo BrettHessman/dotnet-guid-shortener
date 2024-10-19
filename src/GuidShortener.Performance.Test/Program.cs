@@ -26,21 +26,21 @@ namespace GuidShortener.Performance.Test
             timer.Start();
             Array.ForEach(stringArray, x => GuidShortener.FromB32ToGuid(x));
             timer.Stop();
-            Console.WriteLine($"1,000,000 base32string -> Guid = ({timer.Elapsed.TotalSeconds})ms");
+            Console.WriteLine($"1,000,000 base32string -> Guid = ({timer.Elapsed.TotalMilliseconds})ms");
 
             timer.Reset();
             Array.Fill(guidArray, Guid.NewGuid());
             timer.Start();
             Array.ForEach(guidArray, x => GuidShortener.ToB64String(x));
             timer.Stop();
-            Console.WriteLine($"1,000,000 Guid -> base64string = ({timer.Elapsed.TotalSeconds})ms");
+            Console.WriteLine($"1,000,000 Guid -> base64string = ({timer.Elapsed.TotalMilliseconds})ms");
 
             timer.Reset();
             Array.Fill(stringArray, GuidShortener.ToB64String(Guid.NewGuid()));
             timer.Start();
             Array.ForEach(stringArray, x => GuidShortener.FromB64ToGuid(x));
             timer.Stop();
-            Console.WriteLine($"1,000,000 base64string -> Guid = ({timer.Elapsed.TotalSeconds})ms");
+            Console.WriteLine($"1,000,000 base64string -> Guid = ({timer.Elapsed.TotalMilliseconds})ms");
         }
     }
 }
